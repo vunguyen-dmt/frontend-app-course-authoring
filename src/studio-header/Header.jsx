@@ -43,7 +43,7 @@ const Header = ({
             <a rel="noopener" href={`${config.STUDIO_BASE_URL}/tabs/${courseId}`}>{intl.formatMessage(messages['header.links.pages'])}</a>
           </div>
           <div className="mb-1 small">
-            <a rel="noopener" href={`${config.STUDIO_BASE_URL}/assets/${courseId}`}>{intl.formatMessage(messages['header.links.filesAndUploads'])}</a>
+            <a rel="noopener" href={`https://insights.lms.hutech.edu.vn/file/browser?prefix=${encodeURIComponent(courseId)}%2F`}>{intl.formatMessage(messages['header.links.filesAndUploads'])}</a>
           </div>
           <div className="mb-1 small">
             <a rel="noopener" href={`${config.STUDIO_BASE_URL}/textbooks/${courseId}`}>{intl.formatMessage(messages['header.links.textbooks'])}</a>
