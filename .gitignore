@@ -1,3 +1,4 @@
+.env.development
 .DS_Store
 .eslintcache
 .idea
