@@ -23,7 +23,7 @@ const messages = defineMessages({
   },
   Discussion: {
     id: 'Discussion',
-    defaultMessage: 'Thảo luận',
+    defaultMessage: 'Discussion',
   },
   Notes: {
     id: 'Notes',
@@ -36,6 +36,10 @@ const messages = defineMessages({
   Calculator: {
     id: 'Calculator',
     defaultMessage: 'Calculator',
+  },
+  Live: {
+    id: 'course-authoring.pages-resources.live',
+    defaultMessage: 'Live',
   },
   Textbooks: {
     id: 'Textbooks',
@@ -64,6 +68,10 @@ const messages = defineMessages({
   'Calculator.Description': {
     id: 'Calculator.Description',
     defaultMessage: 'Provide an in-course calculator for simple and complex calculations.',
+  },
+  'Live.Description': {
+    id: 'course-authoring.pages-resources.live.description',
+    defaultMessage: 'Enable in-platform video conferencing by configuring live.',
   },
   'Textbooks.Description': {
     id: 'Textbooks.Description',
