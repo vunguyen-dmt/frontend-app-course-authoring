@@ -353,6 +353,7 @@
     "course-authoring.pages-resources.live": "Trực tuyến",
     "Progress": "Tiến độ",
     "Discussion": "Thảo luận",
+    "course-authoring.pages-resources.teams": "Đội",
     "Notes": "Ghi chú",
     "Wiki": "Wiki",
     "Calculator": "Máy tính",
@@ -365,5 +366,6 @@
     "Calculator.Description": "Cung cấp một máy tính trong khóa học để tính toán đơn giản và phức tạp.",
     "Textbooks.Description": "Tạo và quản lý thư viện các bài đọc khóa học, sách giáo khoa và chương.",
     "Custom pages.Description": "Cung cấp nội dung và tài nguyên khóa học bổ sung với các trang tùy chỉnh.",
-    "course-authoring.pages-resources.live.description": "Kích hoạt video conferencing bằng cấu hình trực tuyến."
+    "course-authoring.pages-resources.live.description": "Kích hoạt video conferencing bằng cấu hình trực tuyến.",
+    "course-authoring.pages-resources.teams.description": "Tận dụng đội để cho phép người học kết nối theo chủ đề quan tâm."
   }
