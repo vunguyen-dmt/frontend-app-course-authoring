@@ -61,7 +61,7 @@ initialize({
   messages: [
     appMessages,
     footerMessages,
-    libContentMessages
+    libContentMessages,
   ],
   requireAuthenticatedUser: true,
 });
