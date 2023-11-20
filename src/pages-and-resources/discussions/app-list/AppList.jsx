@@ -20,7 +20,8 @@ const AppList = ({ intl }) => {
   const {
     appIds, featureIds, status, activeAppId, selectedAppId,
   } = useSelector(state => state.discussions);
-  const apps = useModels('apps', appIds);
+  // remove some unwanted apps.
+  const apps = useModels('apps', appIds).filter(_ => _.id === 'legacy');
   const features = useModels('features', featureIds);
 
   // This could be a bit confusing.  activeAppId is the ID of the app that is currently configured

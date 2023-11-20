@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
 import { messages as footerMessages } from '@edx/frontend-component-footer';
+import { messages as libContentMessages } from '@edx/frontend-lib-content-components';
 
 import appMessages from './i18n';
 
@@ -60,6 +61,7 @@ initialize({
   messages: [
     appMessages,
     footerMessages,
+    libContentMessages,
   ],
   requireAuthenticatedUser: true,
 });
