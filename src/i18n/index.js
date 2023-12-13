@@ -14,6 +14,8 @@ import frCAMessages from './messages/fr_CA.json';
 import dedeMessages from './messages/de_DE.json';
 import ititMessages from './messages/it_IT.json';
 import ptptMessages from './messages/pt_PT.json';
+import viMessages from './messages/vi.json';
+
 // no need to import en messages-- they are in the defaultMessage field
 
 const appMessages = {
@@ -31,6 +33,7 @@ const appMessages = {
   'de-de': dedeMessages,
   'it-it': ititMessages,
   'pt-pt': ptptMessages,
+  vi: viMessages,
 };
 
 export default [
