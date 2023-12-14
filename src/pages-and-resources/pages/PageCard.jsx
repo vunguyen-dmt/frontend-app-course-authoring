@@ -65,7 +65,7 @@ const PageCard = ({
       })}
     >
       <Card.Header
-        title={page.name}
+        title={intl.formatMessage(messages[page.name])}
         subtitle={page.enabled && (
           <Badge variant="success" className="mt-1">
             {intl.formatMessage(messages.enabled)}
@@ -76,7 +76,7 @@ const PageCard = ({
       />
       <Card.Body>
         <Card.Section>
-          {page.description}
+        {intl.formatMessage(messages[page.name + '.Description'])}
         </Card.Section>
       </Card.Body>
     </Card>
