@@ -1,5 +1,7 @@
 import { messages as footerMessages } from '@edx/frontend-component-footer';
 import { messages as paragonMessages } from '@edx/paragon';
+import { messages as libContentMessages } from '@edx/frontend-lib-content-components';
+
 import arMessages from './messages/ar.json';
 import frMessages from './messages/fr.json';
 import es419Messages from './messages/es_419.json';
@@ -40,4 +42,5 @@ export default [
   footerMessages,
   paragonMessages,
   appMessages,
+  libContentMessages
 ];
