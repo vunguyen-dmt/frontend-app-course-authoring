@@ -84,7 +84,7 @@
     "authoring.discussions.builtIn.allowAnonymous.label": "Cho phép bài viết thảo luận ẩn danh",
     "authoring.discussions.builtIn.allowAnonymousPeers.help": "Người học sẽ có thể đăng ẩn danh với bạn học nhưng tất cả các bài đăng sẽ hiển thị với nhân viên của khóa học.",
     "authoring.discussions.builtIn.allowAnonymousPeers.label": "Cho phép các bài thảo luận ẩn danh với bạn học",
-    "authoring.discussions.builtIn.anonymousPosting": "Đăng nặc danh",
+    "authoring.discussions.builtIn.anonymousPosting": "Đăng ẩn danh",
     "authoring.discussions.builtIn.blackoutDates.help": "Nếu được thêm vào, người học sẽ không thể đăng trong các cuộc thảo luận giữa những ngày này.",
     "authoring.discussions.builtIn.blackoutDates.label": "Ngày Blackout (Blackout dates)",
     "authoring.discussions.builtIn.cohortsEnabled.label": "Để điều chỉnh các cài đặt này, hãy bật nhóm trên ",
