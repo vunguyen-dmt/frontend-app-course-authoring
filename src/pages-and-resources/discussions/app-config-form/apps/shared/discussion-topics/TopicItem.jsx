@@ -115,7 +115,7 @@ const TopicItem = ({
           className="m-2"
         >
           <Form.Control
-            floatingLabel="Topic name"
+            floatingLabel={intl.formatMessage(messages.topicName)}
             onChange={handleChange}
             onBlur={(event) => handleFocusOut(event)}
             value={name}

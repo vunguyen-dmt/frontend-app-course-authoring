@@ -57,6 +57,10 @@ const messages = defineMessages({
     id: 'Custom pages',
     defaultMessage: 'Custom pages',
   },
+  'Open Response Assessment Settings': {
+    id: 'course-authoring.pages-resources.ora_settings',
+    defaultMessage: 'Open Response Assessment Settings',
+  },
   'Progress.Description': {
     id: 'Progress.Description',
     defaultMessage: 'Keep learners engaged and on track throughout the course.',
@@ -92,6 +96,10 @@ const messages = defineMessages({
   'Custom pages.Description': {
     id: 'Custom pages.Description',
     defaultMessage: 'Provide additional course content and resources with custom pages.',
+  },
+  'Open Response Assessment Settings.Description': {
+    id: 'course-authoring.pages-resources.ora_settings.Description',
+    defaultMessage: 'Course level settings for Open Response Assessment.',
   },
 });
 
