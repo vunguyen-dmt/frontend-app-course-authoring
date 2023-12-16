@@ -29,6 +29,10 @@ const messages = defineMessages({
     id: 'Discussion',
     defaultMessage: 'Thảo luận',
   },
+  Teams: {
+    id: 'course-authoring.pages-resources.teams',
+    defaultMessage: 'Team',
+  },
   Notes: {
     id: 'Notes',
     defaultMessage: 'Notes',
@@ -40,6 +44,10 @@ const messages = defineMessages({
   Calculator: {
     id: 'Calculator',
     defaultMessage: 'Calculator',
+  },
+  Live: {
+    id: 'course-authoring.pages-resources.live',
+    defaultMessage: 'Live',
   },
   Textbooks: {
     id: 'Textbooks',
@@ -57,6 +65,10 @@ const messages = defineMessages({
     id: 'Discussion.Description',
     defaultMessage: 'Encourage participation and engagement in your course with discussions.',
   },
+  'Teams.Description': {
+    id: 'course-authoring.pages-resources.teams.description',
+    defaultMessage: 'Leverage teams to allow learners to connect by topic of interest.',
+  },
   'Notes.Description': {
     id: 'Notes.Description',
     defaultMessage: 'Allow learners to highlight passages and make notes right in the course.',
@@ -68,6 +80,10 @@ const messages = defineMessages({
   'Calculator.Description': {
     id: 'Calculator.Description',
     defaultMessage: 'Provide an in-course calculator for simple and complex calculations.',
+  },
+  'Live.Description': {
+    id: 'course-authoring.pages-resources.live.description',
+    defaultMessage: 'Enable in-platform video conferencing by configuring live.',
   },
   'Textbooks.Description': {
     id: 'Textbooks.Description',
