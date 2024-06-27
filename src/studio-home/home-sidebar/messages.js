@@ -7,7 +7,8 @@ const messages = defineMessages({
   },
   aboutDescription: {
     id: 'course-authoring.studio-home.sidebar.about.description',
-    defaultMessage: 'Click "Looking for help with Studio" at the bottom of the page to access our continually updated documentation and other {studioShortName} resources.',
+    defaultMessage: 'View these {studioShortName} guides',
+    // defaultMessage: 'Click "Looking for help with Studio" at the bottom of the page to access our continually updated documentation and other {studioShortName} resources.',
   },
   studioHomeLinkToGettingStarted: {
     id: 'course-authoring.studio-home.sidebar.about.getting-started',
@@ -44,6 +45,10 @@ const messages = defineMessages({
   sidebarDescription4MailTo: {
     id: 'course-authoring.studio-home.sidebar.about.description-4.mail-to',
     defaultMessage: 'contact {platformName} staff with further questions',
+  },
+  guideByDLC: {
+    id: 'course-authoring.studio-home.sidebar.about.guideByDLC',
+    defaultMessage: 'Guide to build a course by DLC',
   },
 });
 

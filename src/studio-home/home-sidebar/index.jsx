@@ -38,6 +38,11 @@ const HomeSidebar = () => {
       <HelpSidebarLink
         as="span"
         pathToPage={aboutHomeLink || ''}
+        title={intl.formatMessage(messages.guideByDLC, { studioName })}
+      />
+      <HelpSidebarLink
+        as="span"
+        pathToPage={aboutHomeLink || ''}
         title={intl.formatMessage(messages.studioHomeLinkToGettingStarted, { studioName })}
       />
       {isShowMailToGetInstruction && (

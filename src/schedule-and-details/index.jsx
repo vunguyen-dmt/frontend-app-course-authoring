@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
@@ -12,6 +12,7 @@ import {
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import Placeholder from '@edx/frontend-lib-content-components';
 
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { RequestStatus } from '../data/constants';
 import { useModel } from '../generic/model-store';
 import AlertMessage from '../generic/alert-message';
@@ -43,8 +44,12 @@ import LicenseSection from './license-section';
 import ScheduleSidebar from './schedule-sidebar';
 import messages from './messages';
 import { useLoadValuesPrompt, useSaveValuesPrompt } from './hooks';
+import {
+  getCourseTeam,
+} from '../course-team/data/api';
 
 const ScheduleAndDetails = ({ intl, courseId }) => {
+  const [canEditDates, setCanEditDates] = useState(false);
   const courseSettings = useSelector(getCourseSettings);
   const courseDetails = useSelector(getCourseDetails);
   const loadingDetailsStatus = useSelector(getLoadingDetailsStatus);
@@ -54,6 +59,24 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
 
   const course = useModel('courseDetails', courseId);
   document.title = getPageHeadTitle(course?.name, intl.formatMessage(messages.headingTitle));
+
+  // only global staff, or course admin can edit dates. Course staffs can NOT.
+  useEffect(() => {
+    const currentUser = getAuthenticatedUser();
+    getCourseTeam(courseId).then(teamMemberData => {
+      let teamMembers = [];
+      if (teamMemberData) {
+        teamMembers = teamMemberData.users;
+      }
+
+      const isCourseInstructor = currentUser && teamMembers && teamMembers.filter(i => i.role === 'instructor' && i.username === currentUser.username).length > 0;
+
+      if ((currentUser && currentUser.administrator === true) || isCourseInstructor) {
+        console.log('setCanEditDates');
+        setCanEditDates(true);
+      }
+    });
+  }, []);
 
   const {
     platformName,
@@ -266,6 +289,7 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
                     certificatesDisplayBehavior={certificatesDisplayBehavior}
                     canShowCertificateAvailableDateField={canShowCertificateAvailableDateField}
                     onChange={handleValuesChange}
+                    canEditDates={canEditDates}
                   />
                   {aboutPageEditable && (
                     <DetailsSection

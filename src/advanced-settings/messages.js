@@ -81,6 +81,10 @@ const messages = defineMessages({
     id: 'course-authoring.advanced-settings.alert.proctoring.error.aria.describedby',
     defaultMessage: 'alert-danger-description',
   },
+  warning: {
+    id: 'course-authoring.advanced-settings.warning',
+    defaultMessage: 'alert-danger-description',
+  },
 });
 
 export default messages;

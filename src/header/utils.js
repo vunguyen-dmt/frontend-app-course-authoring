@@ -17,7 +17,7 @@ export const getContentMenuItems = ({ studioBaseUrl, courseId, intl }) => {
       title: intl.formatMessage(messages['header.links.pages']),
     },
     {
-      href: `${studioBaseUrl}/assets/${courseId}`,
+      href: `${getConfig().INSIGHTS_BASE_URL}/file/browser?prefix=${encodeURIComponent(courseId)}%2F`,
       title: intl.formatMessage(messages['header.links.filesAndUploads']),
     },
   ];

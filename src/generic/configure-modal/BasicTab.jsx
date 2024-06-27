@@ -28,6 +28,7 @@ const BasicTab = ({
   return (
     <>
       <h5 className="mt-4 text-gray-700"><FormattedMessage {...messages.releaseDateAndTime} /></h5>
+      <p className="text-danger font-weight-bold"><FormattedMessage {...messages.releaseDateAndTimeImportantNote}/></p>
       <hr />
       <div data-testid="release-date-stack">
         <Stack className="mt-3" direction="horizontal" gap={5}>

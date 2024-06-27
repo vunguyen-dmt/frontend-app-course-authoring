@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from '@edx/frontend-platform/i18n';
-
 import SectionSubHeader from '../../generic/section-sub-header';
 import { ScheduleRow, SCHEDULE_ROW_TYPES } from './schedule-row';
 import { CertificateDisplayRow } from './certificate-display-row';
@@ -20,6 +19,7 @@ const ScheduleSection = ({
   certificatesDisplayBehavior,
   canShowCertificateAvailableDateField,
   onChange,
+  canEditDates,
 }) => {
   const intl = useIntl();
   const enrollmentEndHelpText = intl.formatMessage(
@@ -44,6 +44,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleCourseStartDateHelpText),
       controlName: 'startDate',
       errorFeedback: errorFields?.startDate,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -55,6 +56,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleCourseEndDateHelpText),
       controlName: 'endDate',
       errorFeedback: errorFields?.endDate,
+      readonly: !canEditDates,
     },
     {
       skip: !canShowCertificateAvailableDateField,
@@ -64,6 +66,7 @@ const ScheduleSection = ({
       availableDateErrorFeedback: errorFields?.certificateAvailableDate,
       certificatesDisplayBehavior,
       displayBehaviorErrorFeedback: errorFields?.certificatesDisplayBehavior,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -75,6 +78,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleEnrollmentStartDateHelpText),
       controlName: 'enrollmentStart',
       errorFeedback: errorFields?.enrollmentStart,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -84,7 +88,7 @@ const ScheduleSection = ({
       value: enrollmentEnd,
       rowType: SCHEDULE_ROW_TYPES.datetime,
       helpText: computedEnrollmentEndHelpText,
-      readonly: !enrollmentEndEditable,
+      readonly: !enrollmentEndEditable || !canEditDates,
       controlName: 'enrollmentEnd',
       errorFeedback: errorFields?.enrollmentEnd,
     },
@@ -150,6 +154,7 @@ ScheduleSection.defaultProps = {
   enrollmentStart: '',
   upgradeDeadline: '',
   certificateAvailableDate: '',
+  canEditDates: false
 };
 
 ScheduleSection.propTypes = {
@@ -165,6 +170,7 @@ ScheduleSection.propTypes = {
   certificatesDisplayBehavior: PropTypes.string.isRequired,
   canShowCertificateAvailableDateField: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
+  canEditDates: PropTypes.bool,
 };
 
 export default ScheduleSection;

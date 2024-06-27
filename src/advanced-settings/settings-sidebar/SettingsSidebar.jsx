@@ -28,7 +28,7 @@ const SettingsSidebar = ({ intl, courseId, proctoredExamSettingsUrl }) => (
       <FormattedMessage
         id="course-authoring.advanced-settings.about.description-3"
         defaultMessage="{notice} When you enter strings as policy values, ensure that you use double quotation marks (“) around the string. Do not use single quotation marks (‘)."
-        values={{ notice: <strong>Note:</strong> }}
+        values={{ notice: <strong>{intl.formatMessage(messages.note)}:</strong> }}
       />
     </p>
   </HelpSidebar>

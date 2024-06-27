@@ -2,12 +2,13 @@ import React from 'react';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { Helmet } from 'react-helmet';
 import { Container } from '@openedx/paragon';
-import { StudioFooter } from '@edx/frontend-component-footer';
+// import { StudioFooter } from '@edx/frontend-component-footer';
 
 import Header from '../header';
 import messages from './messages';
 import AccessibilityBody from './AccessibilityBody';
 import AccessibilityForm from './AccessibilityForm';
+import Footer from '../Footer/Footer';
 
 const AccessibilityPage = ({
   // injected
@@ -29,7 +30,8 @@ const AccessibilityPage = ({
         <AccessibilityBody {...{ email, communityAccessibilityLink }} />
         <AccessibilityForm accessibilityEmail={email} />
       </Container>
-      <StudioFooter />
+      <Footer/>
+      {/* <StudioFooter /> */}
     </>
   );
 };

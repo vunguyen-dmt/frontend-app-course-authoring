@@ -106,13 +106,19 @@ const PageAlerts = ({
             platformName: process.env.SITE_NAME,
           })}
         </div>
-        <Hyperlink
-          showLaunchIcon={false}
-          destination={discussionsIncontextFeedbackUrl}
-          target="_blank"
-        >
-          {intl.formatMessage(messages.discussionNotificationFeedback)}
-        </Hyperlink>
+        {
+          discussionsIncontextFeedbackUrl
+          && (
+            <Hyperlink
+              showLaunchIcon={false}
+              destination={discussionsIncontextFeedbackUrl}
+              target="_blank"
+            >
+              {intl.formatMessage(messages.discussionNotificationFeedback)}
+            </Hyperlink>
+          )
+        }
+
       </Alert>
     );
   };

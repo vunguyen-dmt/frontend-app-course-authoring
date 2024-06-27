@@ -24,6 +24,7 @@ import CreateNewCourseForm from './create-new-course-form';
 import messages from './messages';
 import { useStudioHome } from './hooks';
 import AlertMessage from '../generic/alert-message';
+import Footer from '../Footer/Footer';
 
 const StudioHome = ({ intl }) => {
   const isPaginationCoursesEnabled = getConfig().ENABLE_HOME_PAGE_COURSE_API_V2;
@@ -174,7 +175,8 @@ const StudioHome = ({ intl }) => {
           isQueryPending={anyQueryIsPending}
         />
       </div>
-      <StudioFooter />
+      <Footer/>
+      {/* <StudioFooter /> */}
     </>
   );
 };

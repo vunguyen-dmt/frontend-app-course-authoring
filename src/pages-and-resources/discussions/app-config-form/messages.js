@@ -455,6 +455,22 @@ const messages = defineMessages({
     defaultMessage: 'End time (optional)',
     description: 'label for end time field',
   },
+  topicName: {
+    id: 'authoring.discussions.topicName',
+    defaultMessage: 'Topic name',
+  },
+  Off: {
+    id: 'authoring.discussions.Off',
+    defaultMessage: 'Off',
+  },
+  On: {
+    id: 'authoring.discussions.On',
+    defaultMessage: 'On',
+  },
+  Scheduled: {
+    id: 'authoring.discussions.Scheduled',
+    defaultMessage: 'Scheduled',
+  },
 });
 
 export default messages;

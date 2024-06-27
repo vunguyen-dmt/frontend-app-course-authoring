@@ -55,14 +55,14 @@ const CourseAuthoringRoutes = () => {
           path="course_info"
           element={<PageWrap><CourseUpdates courseId={courseId} /></PageWrap>}
         />
-        <Route
+        {/* <Route
           path="assets"
           element={<PageWrap><FilesPage courseId={courseId} /></PageWrap>}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="videos"
           element={getConfig().ENABLE_VIDEO_UPLOAD_PAGE_LINK_IN_CONTENT_DROPDOWN === 'true' ? <PageWrap><VideosPage courseId={courseId} /></PageWrap> : null}
-        />
+        /> */}
         <Route
           path="pages-and-resources/*"
           element={<PageWrap><PagesAndResources courseId={courseId} /></PageWrap>}

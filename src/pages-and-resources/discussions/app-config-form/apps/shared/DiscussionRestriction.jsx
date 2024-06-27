@@ -47,7 +47,7 @@ const DiscussionRestriction = () => {
       })}
       onClick={() => handleClick(restriction.value)}
     >
-      {restriction.label}
+      {intl.formatMessage(messages[restriction.label])}
     </Button>
   )), [selectedRestrictionOption]);
 

@@ -42,6 +42,11 @@ const messages = defineMessages({
     defaultMessage: 'Proctored exam settings',
     description: 'Link to Proctored exam settings page',
   },
+  note: {
+    id: 'course-authoring.advanced-settings.sidebar.note',
+    defaultMessage: 'Note',
+    description: 'Link to Proctored exam settings page',
+  },
 });
 
 export default messages;

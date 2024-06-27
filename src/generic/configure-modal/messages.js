@@ -275,6 +275,10 @@ const messages = defineMessages({
     id: 'course-authoring.course-outline.configure-modal.advanced-tab.reviewRulesDescriptionLinkText',
     defaultMessage: 'general proctored exam rules',
   },
+  releaseDateAndTimeImportantNote: {
+    id: 'course-authoring.course-outline.configure-modal.basic-tab.release-date-and-time-important-note',
+    defaultMessage: 'Important: Time values are set in UTC.',
+  },
 });
 
 export default messages;
