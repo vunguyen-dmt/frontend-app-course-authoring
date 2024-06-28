@@ -26,60 +26,80 @@ const messages = defineMessages({
     defaultMessage: 'Content permissions',
   },
   Progress: {
-    id: 'Progress',
+    id: 'course-authoring.pages-resources.progress',
     defaultMessage: 'Progress',
   },
   Discussion: {
-    id: 'Discussion',
+    id: 'course-authoring.pages-resources.discussion',
     defaultMessage: 'Thảo luận',
   },
+  Teams: {
+    id: 'course-authoring.pages-resources.teams',
+    defaultMessage: 'Teams',
+  },
   Notes: {
-    id: 'Notes',
+    id: 'course-authoring.pages-resources.notes',
     defaultMessage: 'Notes',
   },
   Wiki: {
-    id: 'Wiki',
+    id: 'course-authoring.pages-resources.wiki',
     defaultMessage: 'Wiki',
   },
   Calculator: {
-    id: 'Calculator',
+    id: 'course-authoring.pages-resources.calculator',
     defaultMessage: 'Calculator',
   },
+  Live: {
+    id: 'course-authoring.pages-resources.live',
+    defaultMessage: 'Live',
+  },
   Textbooks: {
-    id: 'Textbooks',
+    id: 'course-authoring.pages-resources.textbooks',
     defaultMessage: 'Textbooks',
   },
   'Custom pages': {
-    id: 'Custom pages',
+    id: 'course-authoring.pages-resources.custom-pages',
     defaultMessage: 'Custom pages',
   },
+  'Open Response Assessment Settings': {
+    id: 'course-authoring.pages-resources.ora-settings',
+    defaultMessage: 'Open Response Assessment Settings',
+  },
   'Progress.Description': {
-    id: 'Progress.Description',
+    id: 'course-authoring.pages-resources.progress.description',
     defaultMessage: 'Keep learners engaged and on track throughout the course.',
   },
   'Discussion.Description': {
-    id: 'Discussion.Description',
+    id: 'course-authoring.pages-resources.discussion.description',
     defaultMessage: 'Encourage participation and engagement in your course with discussions.',
   },
   'Notes.Description': {
-    id: 'Notes.Description',
+    id: 'course-authoring.pages-resources.notes.description',
     defaultMessage: 'Allow learners to highlight passages and make notes right in the course.',
   },
   'Wiki.Description': {
-    id: 'Wiki.Description',
+    id: 'course-authoring.pages-resources.wiki.description',
     defaultMessage: 'Enable learners to access, and collaborate on course-related information.',
   },
   'Calculator.Description': {
-    id: 'Calculator.Description',
+    id: 'course-authoring.pages-resources.calculator.description',
     defaultMessage: 'Provide an in-course calculator for simple and complex calculations.',
   },
+  'Live.Description': {
+    id: 'course-authoring.pages-resources.live.description',
+    defaultMessage: 'Enable in-platform video conferencing by configuring live',
+  },
   'Textbooks.Description': {
-    id: 'Textbooks.Description',
+    id: 'course-authoring.pages-resources.textbooks.description',
     defaultMessage: 'Create and manage a library of course readings, textbooks, and chapters.',
   },
   'Custom pages.Description': {
-    id: 'Custom pages.Description',
+    id: 'course-authoring.pages-resources.custom-pages.description',
     defaultMessage: 'Provide additional course content and resources with custom pages.',
+  },
+  'Open Response Assessment Settings.Description': {
+    id: 'course-authoring.pages-resources.ora-settings.description',
+    defaultMessage: 'Course level settings for Open Response Assessment.',
   },
 });
 

@@ -6,7 +6,7 @@ import {
   AccessTime as ClockIcon,
 } from '@openedx/paragon/icons';
 
-import { getCurrentLanguageCode } from '../../Footer/handleLanguageChange';
+import { getCurrentLanguageCode } from '@edx/frontend-component-footer';
 
 import messages from './messages';
 

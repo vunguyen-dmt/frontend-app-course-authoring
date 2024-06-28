@@ -7,7 +7,7 @@ import {
   ActionRow,
   Button,
 } from '@openedx/paragon';
-// import { StudioFooter } from '@edx/frontend-component-footer';
+import Footer from '@edx/frontend-component-footer';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import Header from '../header';
@@ -19,7 +19,6 @@ import CourseRerunForm from './course-rerun-form';
 import CourseRerunSideBar from './course-rerun-sidebar';
 import messages from './messages';
 import { useCourseRerun } from './hooks';
-import Footer from '../Footer/Footer';
 
 const CourseRerun = () => {
   const { courseId } = useParams();
@@ -90,7 +89,7 @@ const CourseRerun = () => {
         />
       </div>
       {/* <StudioFooter /> */}
-      <Footer />
+      <Footer showLanguageSelector />
     </>
   );
 };

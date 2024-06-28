@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   useLocation,
 } from 'react-router-dom';
-// import { StudioFooter } from '@edx/frontend-component-footer';
+import Footer from '@edx/frontend-component-footer';
 import Header from './header';
 import { fetchCourseDetail } from './data/thunks';
 import { useModel } from './generic/model-store';
@@ -14,7 +14,6 @@ import PermissionDeniedAlert from './generic/PermissionDeniedAlert';
 import { getCourseAppsApiStatus } from './pages-and-resources/data/selectors';
 import { RequestStatus } from './data/constants';
 import Loading from './generic/Loading';
-import Footer from './Footer/Footer';
 
 const AppHeader = ({
   courseNumber, courseOrg, courseTitle, courseId,
@@ -84,7 +83,7 @@ const CourseAuthoringPage = ({ courseId, children }) => {
         )
         )}
       {children}
-      {!inProgress && !isEditor && <Footer />}
+      {!inProgress && !isEditor && <Footer showLanguageSelector />}
     </div>
   );
 };

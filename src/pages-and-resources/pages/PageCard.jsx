@@ -39,7 +39,7 @@ const PageCard = ({
       })}
     >
       <Card.Header
-        title={formatMessage(messages[page.name])}
+        title={messages[page.name] ? formatMessage({...messages[page.name]}) : page.name}
         subtitle={page.enabled && (
           <Badge variant="success" className="mt-1">
             {formatMessage(messages.enabled)}
@@ -50,7 +50,7 @@ const PageCard = ({
       />
       <Card.Body>
         <Card.Section>
-          {formatMessage(messages[`${page.name }.Description`])}
+          {messages[`${page.name }.Description`] ? formatMessage({...messages[`${page.name }.Description`]}) : page.description}
         </Card.Section>
       </Card.Body>
     </Card>

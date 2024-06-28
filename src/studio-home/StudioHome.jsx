@@ -9,7 +9,7 @@ import {
 } from '@openedx/paragon';
 import { Add as AddIcon, Error } from '@openedx/paragon/icons';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { StudioFooter } from '@edx/frontend-component-footer';
+import Footer from '@edx/frontend-component-footer';
 import { getConfig } from '@edx/frontend-platform';
 
 import Loading from '../generic/Loading';
@@ -24,7 +24,6 @@ import CreateNewCourseForm from './create-new-course-form';
 import messages from './messages';
 import { useStudioHome } from './hooks';
 import AlertMessage from '../generic/alert-message';
-import Footer from '../Footer/Footer';
 
 const StudioHome = ({ intl }) => {
   const isPaginationCoursesEnabled = getConfig().ENABLE_HOME_PAGE_COURSE_API_V2;
@@ -175,7 +174,7 @@ const StudioHome = ({ intl }) => {
           isQueryPending={anyQueryIsPending}
         />
       </div>
-      <Footer/>
+      <Footer showLanguageSelector />
       {/* <StudioFooter /> */}
     </>
   );

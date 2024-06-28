@@ -1,6 +1,6 @@
 // @ts-check
 import React, { useMemo, useState } from 'react';
-// import { StudioFooter } from '@edx/frontend-component-footer';
+import Footer from '@edx/frontend-component-footer';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { Toast } from '@openedx/paragon';
@@ -9,7 +9,6 @@ import AlertMessage from '../generic/alert-message';
 import Header from '../header';
 import { TaxonomyContext } from './common/context';
 import messages from './messages';
-import Footer from '../Footer/Footer';
 
 const TaxonomyLayout = () => {
   const intl = useIntl();
@@ -37,7 +36,7 @@ const TaxonomyLayout = () => {
           />
         )}
         <Outlet />
-        <Footer/>
+        <Footer showLanguageSelector />
         {/* <StudioFooter /> */}
         {toastMessage && (
           <Toast
