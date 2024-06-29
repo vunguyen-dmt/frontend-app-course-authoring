@@ -6,34 +6,34 @@ import {
   AccessTime as ClockIcon,
 } from '@openedx/paragon/icons';
 
-import { getCurrentLanguageCode } from '@edx/frontend-component-footer';
+// import { getCurrentLanguageCode } from '@edx/frontend-component-footer';
 
 import messages from './messages';
 
-const ConvertReleaseDate = (d) => {
-  if (d) {
-    try {
-      const languageCode = getCurrentLanguageCode();
-      if (languageCode === 'vi') {
-        const displayString = `${new Date(d.replace('at', '').replace('UTC', 'Z'))
-          .toLocaleString('vi-VN', {
-            imeZone: 'Asia/Bangkok',
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-          }) } +07`;
+// const ConvertReleaseDate = (d) => {
+//   if (d) {
+//     try {
+//       const languageCode = getCurrentLanguageCode();
+//       if (languageCode === 'vi') {
+//         const displayString = `${new Date(d.replace('at', '').replace('UTC', 'Z'))
+//           .toLocaleString('vi-VN', {
+//             imeZone: 'Asia/Bangkok',
+//             weekday: 'long',
+//             year: 'numeric',
+//             month: 'long',
+//             day: 'numeric',
+//             hour: 'numeric',
+//             minute: 'numeric',
+//           }) } +07`;
 
-        return displayString;
-      }
-    } catch (error) {
-      // pass
-    }
-  }
-  return d;
-};
+//         return displayString;
+//       }
+//     } catch (error) {
+//       // pass
+//     }
+//   }
+//   return d;
+// };
 
 const ReleaseStatus = ({
   isInstructorPaced,
@@ -56,7 +56,7 @@ const ReleaseStatus = ({
     releaseLabel = messages.scheduledLabel;
   }
 
-  const displayReleaseDate = ConvertReleaseDate(releaseDate);
+  // const displayReleaseDate = ConvertReleaseDate(releaseDate);
 
   const releaseStatusDiv = () => (
     <div className="d-flex align-items-center" data-testid="release-status-div">
@@ -65,7 +65,7 @@ const ReleaseStatus = ({
       </span>
       <Icon className="mr-1" size="sm" src={ClockIcon} />
       {intl.formatMessage(releaseLabel)}
-      {releaseDate && displayReleaseDate}
+      {releaseDate && releaseDate}
     </div>
   );
 
