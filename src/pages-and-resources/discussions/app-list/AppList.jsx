@@ -29,8 +29,7 @@ const AppList = ({ intl }) => {
     appIds, featureIds, status, saveStatus, activeAppId, selectedAppId, enabled, postingRestrictions,
   } = useSelector(state => state.discussions);
   const [discussionTabToggle, setDiscussionTabToggle] = useState(enabled);
-  const apps = useModels('apps', appIds).filter(i => i.id === 'openedx');
-  console.log(apps)
+  const apps = useModels('apps', appIds).filter(i => i.id === 'openedx' || i.id === 'legacy');
   const features = useModels('features', featureIds);
   const isGlobalStaff = getAuthenticatedUser().administrator;
   const ltiProvider = !['openedx', 'legacy'].includes(activeAppId);

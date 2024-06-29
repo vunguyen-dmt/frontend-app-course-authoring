@@ -73,6 +73,10 @@ const messages = defineMessages({
     id: 'course-authoring.pages-resources.discussion.description',
     defaultMessage: 'Encourage participation and engagement in your course with discussions.',
   },
+  'Teams.Description': {
+    id: 'course-authoring.pages-resources.teams.description',
+    defaultMessage: 'Leverage teams to allow learners to connect by topic of interest.',
+  },
   'Notes.Description': {
     id: 'course-authoring.pages-resources.notes.description',
     defaultMessage: 'Allow learners to highlight passages and make notes right in the course.',
