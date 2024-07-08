@@ -37,7 +37,7 @@ const HomeSidebar = () => {
       </p>
       <HelpSidebarLink
         as="span"
-        pathToPage={aboutHomeLink || ''}
+        pathToPage="https://dlc.hutech.edu.vn/hutech-x-doc"
         title={intl.formatMessage(messages.guideByDLC, { studioName })}
       />
       <HelpSidebarLink
