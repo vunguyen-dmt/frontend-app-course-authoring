@@ -28,6 +28,7 @@ import './index.scss';
 
 const CoursesTab = ({
   coursesDataItems,
+  filterDataItems,
   showNewCourseContainer,
   onClickNewCourse,
   isShowProcessing,
@@ -60,6 +61,8 @@ const CoursesTab = ({
       order,
       archivedOnly,
       activeOnly,
+      orgDefault,
+      run,
     } = studioHomeCoursesParams;
 
     const customParams = {
@@ -67,6 +70,8 @@ const CoursesTab = ({
       order,
       archivedOnly,
       activeOnly,
+      orgDefault,
+      run,
     };
 
     dispatch(fetchStudioHomeData(locationValue, false, { page, ...customParams }, true));
@@ -82,6 +87,8 @@ const CoursesTab = ({
       cleanFilters: true,
       archivedOnly: undefined,
       activeOnly: undefined,
+      orgDefault: undefined,
+      run: undefined,
     };
 
     dispatch(fetchStudioHomeData(locationValue, false, { page: 1, order: 'display_name' }, true));
@@ -115,7 +122,7 @@ const CoursesTab = ({
         {isShowProcessing && !isEnabledPagination && <ProcessingCourses />}
         {isEnabledPagination && (
           <div className="d-flex flex-row justify-content-between my-4">
-            <CoursesFilters dispatch={dispatch} locationValue={locationValue} isLoading={isLoading} />
+            <CoursesFilters dispatch={dispatch} locationValue={locationValue} isLoading={isLoading} filterData={filterDataItems} />
             <p data-testid="pagination-info">
               {intl.formatMessage(messages.coursesPaginationInfo, {
                 length: coursesDataItems.length,
@@ -131,7 +138,7 @@ const CoursesTab = ({
                 courseKey,
                 displayName,
                 lmsLink,
-                org,
+                orgDefault,
                 rerunLink,
                 number,
                 run,
@@ -144,7 +151,7 @@ const CoursesTab = ({
                   displayName={displayName}
                   lmsLink={lmsLink}
                   rerunLink={rerunLink}
-                  org={org}
+                  orgDefault={orgDefault}
                   number={number}
                   run={run}
                   url={url}
@@ -211,9 +218,17 @@ CoursesTab.propTypes = {
       lmsLink: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       org: PropTypes.string.isRequired,
+      orgDefault: PropTypes.string.isRequired,
       rerunLink: PropTypes.string.isRequired,
       run: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  filterDataItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      courseKey: PropTypes.string.isRequired,
+      orgDefault: PropTypes.string.isRequired,
+      run: PropTypes.string.isRequired,
     }),
   ).isRequired,
   showNewCourseContainer: PropTypes.bool.isRequired,
