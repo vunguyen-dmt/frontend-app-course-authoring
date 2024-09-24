@@ -28,6 +28,7 @@ import './index.scss';
 
 const CoursesTab = ({
   coursesDataItems,
+  filterDataItems,
   showNewCourseContainer,
   onClickNewCourse,
   isShowProcessing,
@@ -121,7 +122,7 @@ const CoursesTab = ({
         {isShowProcessing && !isEnabledPagination && <ProcessingCourses />}
         {isEnabledPagination && (
           <div className="d-flex flex-row justify-content-between my-4">
-            <CoursesFilters dispatch={dispatch} locationValue={locationValue} isLoading={isLoading} coursesData={coursesDataItems} />
+            <CoursesFilters dispatch={dispatch} locationValue={locationValue} isLoading={isLoading} filterData={filterDataItems} />
             <p data-testid="pagination-info">
               {intl.formatMessage(messages.coursesPaginationInfo, {
                 length: coursesDataItems.length,
@@ -221,6 +222,13 @@ CoursesTab.propTypes = {
       rerunLink: PropTypes.string.isRequired,
       run: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  filterDataItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      courseKey: PropTypes.string.isRequired,
+      orgDefault: PropTypes.string.isRequired,
+      run: PropTypes.string.isRequired,
     }),
   ).isRequired,
   showNewCourseContainer: PropTypes.bool.isRequired,

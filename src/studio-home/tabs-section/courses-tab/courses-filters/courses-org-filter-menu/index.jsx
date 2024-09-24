@@ -4,7 +4,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import CoursesFilterMenu from '../courses-filter-menu';
 import messages from './messages';
 
-const CoursesOrgFilterMenu = ({ coursesData, onItemMenuSelected }) => {
+const CoursesOrgFilterMenu = ({ filterOrgData, onItemMenuSelected }) => {
     const intl = useIntl();
 
     const handleCourseTypeSelected = (courseOrg) => {
@@ -15,7 +15,7 @@ const CoursesOrgFilterMenu = ({ coursesData, onItemMenuSelected }) => {
       <>
         <CoursesFilterMenu
           id="dropdown-toggle-courses-org-menu"
-          menuItems={coursesData}
+          menuItems={filterOrgData}
           onItemMenuSelected={handleCourseTypeSelected}
           defaultItemSelectedText={intl.formatMessage(messages.coursesOrgFilterMenuAllOrganization)}
         />

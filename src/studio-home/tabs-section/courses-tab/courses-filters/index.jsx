@@ -1,8 +1,9 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { SearchField } from '@openedx/paragon';
 import { debounce } from 'lodash';
+import { useIntl } from '@edx/frontend-platform/i18n';
 
 import { getStudioHomeCoursesParams } from '../../../data/selectors';
 import { updateStudioHomeCoursesCustomParams } from '../../../data/slice';
@@ -10,8 +11,10 @@ import { fetchStudioHomeData } from '../../../data/thunks';
 import { LoadingSpinner } from '../../../../generic/Loading';
 import CoursesTypesFilterMenu from './courses-types-filter-menu';
 import CoursesOrderFilterMenu from './courses-order-filter-menu';
-import CoursesOrgFilterMenu from './courses-org-filter-menu';
+import CoursesOrgFilterMenu from './courses-org-filter-menu/index.jsx';
 import CoursesRunFilterMenu from './courses-run-filter-menu';
+import messagesOrgFilter from './courses-org-filter-menu/messages';
+import messagesRunFilter from './courses-run-filter-menu/messages';
 import './index.scss';
 
 /* regex to check if a string has only whitespace
@@ -24,9 +27,9 @@ const CoursesFilters = ({
   locationValue,
   onSubmitSearchField,
   isLoading,
-  coursesData,
+  filterData,
 }) => {
-  const [allCoursesData, setCoursesData] = useState(coursesData);
+  const intl = useIntl();
   const [stateFilter, setStateFilter] = useState({
     stateRun: undefined,
     stateOrder: 'display_name',
@@ -34,6 +37,10 @@ const CoursesFilters = ({
     stateOrgDefault: undefined,
     stateArchivedOnly: undefined,
   });
+  const [allOrgOrderList, setAllOrgOrderList] = useState([]);
+  const [allRunOrderList, setAllRunOrderList] = useState([]);
+  const [orgListClick, setOrgListClick] = useState(false);
+  const [runListClick, setRunListClick] = useState(false);
 
   const studioHomeCoursesParams = useSelector(getStudioHomeCoursesParams);
   const {
@@ -47,45 +54,63 @@ const CoursesFilters = ({
   } = studioHomeCoursesParams;
   const [inputSearchValue, setInputSearchValue] = useState('');
   
-  const orgList = allCoursesData
-  .map(course => ({
-    id: course.orgDefault,
-    name: course.orgDefault,
-    value: course.orgDefault
-  }))
-  .filter((value, index, list) => {
-    return list.findIndex(o => {
-      return JSON.stringify(o) === JSON.stringify(value)
-    }) === index
-  });
+  function getOrganizationList() {
+    const orgList = filterData
+    .map(course => ({
+      id: course.orgDefault,
+      name: course.orgDefault,
+      value: course.orgDefault
+    }))
+    .filter((value, index, list) => {
+      return list.findIndex(o => {
+        return JSON.stringify(o) === JSON.stringify(value)
+      }) === index
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+    setAllOrgOrderList([
+      {
+        id: 'all_organization',
+        name: `${intl.formatMessage(messagesOrgFilter.coursesOrgFilterMenuAllOrganization)}`, //'All organization',
+        value: 'allOrganization'
+      },
+      ...orgList
+    ])
+  }
+
+  function getCourseRunList() {
+    const runList = filterData
+    .map(course => ({
+      id: course.run,
+      name: course.run,
+      value: course.run
+    }))
+    .filter((value, index, list) => {
+      return list.findIndex(o => {
+        return JSON.stringify(o) === JSON.stringify(value)
+      }) === index
+    })
+    .sort((a, b) => b.name.localeCompare(a.name));
   
-  const runList = allCoursesData
-  .map(course => ({
-    id: course.run,
-    name: course.run,
-    value: course.run
-  }))
-  .filter((value, index, list) => {
-    return list.findIndex(o => {
-      return JSON.stringify(o) === JSON.stringify(value)
-    }) === index
-  });
+    setAllRunOrderList([
+      {
+        id: 'all_course_run',
+        name: `${intl.formatMessage(messagesRunFilter.coursesRunFilterMenuAll)}`, //'All courses run',
+        value: 'allCourseRun'
+      },
+      ...runList
+    ])
+  }
 
-  const allOrgOrderList = [
-    {
-      id: 'all_organization',
-      name: 'All organization',
-      value: 'allOrganization'
-    }, ...orgList
-  ];
-
-  const allRunOrderList = [
-    {
-      id: 'all_course_run',
-      name: 'All course run',
-      value: 'allCourseRun'
-    }, ...runList
-  ];
+  useEffect(() => {
+    if (!orgListClick) {
+      getOrganizationList();
+    } 
+    
+    if (!runListClick) {
+      getCourseRunList();
+    } 
+  }, [ filterData ])
 
   const getFilterTypeData = (baseFilters) => ({
     archivedCourses: { ...baseFilters, archivedOnly: true, activeOnly: undefined },
@@ -126,7 +151,7 @@ const CoursesFilters = ({
 
     const getFilterTypeAllData = (baseFilters) => Object.assign(
       getFilterTypeData(baseFilters), 
-      objAllOrganization(baseFilters), 
+      objAllOrganization(baseFilters),
       objAllCourseRun(baseFilters)
     );
 
@@ -142,6 +167,20 @@ const CoursesFilters = ({
       ...customParams
     } = filterParamsFormat;
 
+    const checkOrg = allOrgOrderList.find(data => data.value == filterType);
+    if (checkOrg?.value == filterType && checkOrg?.value != 'allOrganization') {
+      setOrgListClick(true)
+    } else if (checkOrg?.value == filterType && checkOrg?.value == 'allOrganization') {
+      setOrgListClick(false)
+    }
+
+    const checkRun = allRunOrderList.find(data => data.value == filterType)
+    if (checkRun?.value == filterType && checkRun?.value != 'allCourseRun') {
+      setRunListClick(true)
+    } else if (checkRun?.value == filterType && checkRun?.value == 'allCourseRun') {
+      setRunListClick(false)
+    }
+    
     dispatch(updateStudioHomeCoursesCustomParams(filterParamsFormat));
     dispatch(fetchStudioHomeData(locationValue, false, { page: 1, ...customParams }, true));
 
@@ -163,7 +202,7 @@ const CoursesFilters = ({
       order: stateFilter.stateOrder,
       activeOnly: stateFilter.stateActiveOnly,
       orgDefault: stateFilter.stateOrgDefault,
-      archivedOnly: stateFilter.archivedCourses,
+      archivedOnly: stateFilter.stateArchivedOnly,
     };
     const hasOnlySpaces = regexOnlyWhiteSpaces.test(searchValueDebounced);
 
@@ -204,10 +243,10 @@ const CoursesFilters = ({
         )}
       </div>
 
-      <CoursesTypesFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} />
+      <CoursesTypesFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} dispatch={dispatch}/>
       <CoursesOrderFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} />
-      <CoursesOrgFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} coursesData={allOrgOrderList}/>
-      <CoursesRunFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} coursesData={allRunOrderList} />
+      <CoursesOrgFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} filterOrgData={allOrgOrderList} />
+      <CoursesRunFilterMenu onItemMenuSelected={handleMenuFilterItemSelected} filterRunData={allRunOrderList} />
     </div>
   );
 };
