@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux';
 import { Icon, Dropdown } from '@openedx/paragon';
 import { Check } from '@openedx/paragon/icons';
 import { getStudioHomeCoursesParams } from '../../../../data/selectors';
+import './index.scss';
 
 const CoursesFilterMenu = ({
   id: idProp,
   menuItems,
   onItemMenuSelected,
   defaultItemSelectedText,
+  runListClick,
 }) => {
   const [itemMenuSelected, setItemMenuSelected] = useState(defaultItemSelectedText);
   const { cleanFilters } = useSelector(getStudioHomeCoursesParams);
@@ -21,6 +23,12 @@ const CoursesFilterMenu = ({
   const courseTypeSelectedIcon = (itemValue) => (itemValue === itemMenuSelected ? (
     <Icon src={Check} className="ml-2" data-testid="menu-item-icon" />
   ) : null);
+
+  useEffect(() => {
+    if (!runListClick && runListClick != undefined) {
+      setItemMenuSelected('All organization');
+    }
+  }, [ runListClick ]);
 
   useEffect(() => {
     if (cleanFilters) {
@@ -39,7 +47,7 @@ const CoursesFilterMenu = ({
       >
         {itemMenuSelected}
       </Dropdown.Toggle>
-      <Dropdown.Menu>
+      <Dropdown.Menu className="limit-height">
         {menuItems.map(({ id, name, value }) => (
           <Dropdown.Item
             key={id}
