@@ -118,6 +118,7 @@ const ScheduleSection = ({
         title={intl.formatMessage(messages.scheduleTitle)}
         description={intl.formatMessage(messages.scheduleDescription)}
       />
+      <h5 className="mt-4 text-danger-400">Lưu ý: cài đặt ngày giờ trên trang này theo múi giờ Việt Nam (UTC+07:00) thay vì múi giờ UTC+0 như trước đây.</h5>
       <ul className="schedule-date-list">
         {propsForScheduleFields
           .filter((field) => !field.skip)

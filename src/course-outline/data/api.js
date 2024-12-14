@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
 // @ts-check
 import { camelCaseObject, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { adjustToLocalTimeFromFrontendToBackend, adjustToLocalTimeFromBackendToFrontend, adjustToLocalTimeFromBackendToFrontendDisplay } from '../../utils';
 
 const getApiBaseUrl = () => getConfig().STUDIO_BASE_URL;
 
@@ -49,6 +51,26 @@ export const exportTags = (courseId) => `${getApiBaseUrl()}/api/content_tagging/
  * @property {null} rerunNotificationId
  */
 
+const adjustSection = (section) => {
+  if (section) {
+    section.releaseDate = adjustToLocalTimeFromBackendToFrontendDisplay(section.releaseDate);
+    section.start = adjustToLocalTimeFromBackendToFrontend(section.start);
+    if (section.due) {
+      section.due = adjustToLocalTimeFromBackendToFrontend(section.due);
+    }
+    if (section.childInfo.children) {
+      section.childInfo.children.forEach(subsection => {
+        subsection.releaseDate = adjustToLocalTimeFromBackendToFrontendDisplay(subsection.releaseDate);
+        subsection.start = adjustToLocalTimeFromBackendToFrontend(subsection.start);
+        subsection.dueDate = adjustToLocalTimeFromBackendToFrontendDisplay(subsection.dueDate);
+        subsection.due = adjustToLocalTimeFromBackendToFrontend(subsection.due);
+      });
+    }
+  }
+
+  return section;
+};
+
 /**
  * Get course outline index.
  * @param {string} courseId
@@ -57,8 +79,16 @@ export const exportTags = (courseId) => `${getApiBaseUrl()}/api/content_tagging/
 export async function getCourseOutlineIndex(courseId) {
   const { data } = await getAuthenticatedHttpClient()
     .get(getCourseOutlineIndexApiUrl(courseId));
-
-  return camelCaseObject(data);
+  const result = camelCaseObject(data);
+  if (result) {
+    result.courseReleaseDate = adjustToLocalTimeFromBackendToFrontendDisplay(result.courseReleaseDate);
+    if (result.courseStructure?.childInfo?.children) {
+      result.courseStructure?.childInfo?.children.forEach(section => {
+        section = adjustSection(section);
+      });
+    }
+  }
+  return result;
 }
 
 /**
@@ -182,7 +212,12 @@ export async function restartIndexingOnCourse(reindexLink) {
 export async function getCourseItem(itemId) {
   const { data } = await getAuthenticatedHttpClient()
     .get(getXBlockApiUrl(itemId));
-  return camelCaseObject(data);
+
+  let result = camelCaseObject(data);
+  if (result && result.category === 'chapter') {
+    result = adjustSection(result);
+  }
+  return result;
 }
 
 /**
@@ -231,10 +266,10 @@ export async function configureCourseSection(sectionId, isVisibleToStaffOnly, st
       metadata: {
         // The backend expects metadata.visible_to_staff_only to either true or null
         visible_to_staff_only: isVisibleToStaffOnly ? true : null,
-        start: startDatetime,
+        start: adjustToLocalTimeFromFrontendToBackend(startDatetime),
       },
     });
-
+  data.metadata.start = adjustToLocalTimeFromBackendToFrontend(data.metadata.start);
   return data;
 }
 
@@ -289,7 +324,7 @@ export async function configureCourseSubsection(
       metadata: {
         // The backend expects metadata.visible_to_staff_only to either true or null
         visible_to_staff_only: isVisibleToStaffOnly ? true : null,
-        due: dueDate,
+        due: adjustToLocalTimeFromFrontendToBackend(dueDate),
         hide_after_due: hideAfterDue,
         show_correctness: showCorrectness,
         is_practice_exam: isPracticeExam,
@@ -298,7 +333,7 @@ export async function configureCourseSubsection(
         exam_review_rules: examReviewRules,
         default_time_limit_minutes: defaultTimeLimitMin,
         is_onboarding_exam: isOnboardingExam,
-        start: releaseDate,
+        start: adjustToLocalTimeFromFrontendToBackend(releaseDate),
       },
     });
   return data;

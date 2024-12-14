@@ -1,7 +1,7 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Stack, Form } from '@openedx/paragon';
 import { FormattedMessage, injectIntl, useIntl } from '@edx/frontend-platform/i18n';
-
 import { DatepickerControl, DATEPICKER_TYPES } from '../datepicker-control';
 import messages from './messages';
 
@@ -31,6 +31,7 @@ const BasicTab = ({
       {!isSelfPaced && (
         <>
           <h5 className="mt-4 text-gray-700"><FormattedMessage {...messages.releaseDateAndTime} /></h5>
+          <h5 className="mt-4 text-danger-400">Lưu ý: cài đặt ngày giờ trên cửa sổ này theo múi giờ Việt Nam (UTC+07:00) thay vì múi giờ UTC+0 như trước đây.</h5>
           <hr />
           <div data-testid="release-date-stack">
             <Stack className="mt-3" direction="horizontal" gap={5}>
@@ -44,7 +45,7 @@ const BasicTab = ({
               <DatepickerControl
                 type={DATEPICKER_TYPES.time}
                 value={releaseDate}
-                label={intl.formatMessage(messages.releaseTimeUTC)}
+                label={intl.formatMessage(messages.releaseTime)}
                 controlName="start-time"
                 onChange={(val) => setFieldValue('releaseDate', val)}
               />
@@ -85,7 +86,7 @@ const BasicTab = ({
                   <DatepickerControl
                     type={DATEPICKER_TYPES.time}
                     value={dueDate}
-                    label={intl.formatMessage(messages.dueTimeUTC)}
+                    label={intl.formatMessage(messages.dueTime)}
                     controlName="start-time"
                     onChange={(val) => setFieldValue('dueDate', val)}
                   />

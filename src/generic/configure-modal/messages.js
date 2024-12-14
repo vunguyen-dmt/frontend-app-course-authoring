@@ -295,6 +295,14 @@ const messages = defineMessages({
     id: 'course-authoring.course-outline.configure-modal.basic-tab.release-date-and-time-important-note',
     defaultMessage: 'Important: Time values are set in UTC.',
   },
+  releaseTime: {
+    id: 'course-authoring.course-outline.configure-modal.basic-tab.release-time',
+    defaultMessage: 'Release time:',
+  },
+  dueTime: {
+    id: 'course-authoring.course-outline.configure-modal.basic-tab.due-time',
+    defaultMessage: 'Due time:',
+  }
 });
 
 export default messages;
