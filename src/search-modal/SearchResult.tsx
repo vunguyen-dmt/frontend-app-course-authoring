@@ -27,7 +27,8 @@ function getLibraryComponentUrlSuffix(hit: ContentHit): string {
 */
 function getUnitUrlSuffix(hit: ContentHit): string {
   const { contextKey, usageKey } = hit;
-  return `course/${contextKey}/container/${usageKey}`;
+  return `/container/${usageKey}`
+  // return `course/${contextKey}/container/${usageKey}`;
 }
 
 /**
@@ -48,7 +49,8 @@ function getUnitComponentUrlSuffix(hit: ContentHit): string {
 
       if ('usageKey' in parent) {
         const encodedUsageKey = encodeURIComponent(libComponentUsageKey || usageKey);
-        return `course/${contextKey}/container/${parent.usageKey}?show=${encodedUsageKey}`;
+        // return `course/${contextKey}/container/${parent.usageKey}?show=${encodedUsageKey}`;
+        return `/container/${parent.usageKey}#${usageKey}`;
       }
     }
   }
@@ -107,10 +109,11 @@ const SearchResult: React.FC<{ hit: ContentHit }> = ({ hit }) => {
     if (contextKey.startsWith('course-v1:')) {
       const urlSuffix = getUrlSuffix(hit);
 
-      if (newWindow) {
-        return `${getPath(getConfig().PUBLIC_PATH)}${urlSuffix}`;
-      }
-      return `/${urlSuffix}`;
+      // if (newWindow) {
+      //   return `${getPath(getConfig().PUBLIC_PATH)}${urlSuffix}`;
+      // }
+      // return `/${urlSuffix}`;
+      return `${getConfig().STUDIO_BASE_URL}${urlSuffix}`;
     }
 
     if (isLibraryKey(contextKey)) {
