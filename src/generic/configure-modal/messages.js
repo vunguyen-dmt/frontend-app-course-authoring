@@ -291,6 +291,14 @@ const messages = defineMessages({
     id: 'course-authoring.course-outline.configure-modal.advanced-tab.reviewRulesDescriptionLinkText',
     defaultMessage: 'general proctored exam rules',
   },
+  releaseTime: {
+    id: 'course-authoring.course-outline.configure-modal.basic-tab.release-time',
+    defaultMessage: 'Release time:',
+  },
+  dueTime: {
+    id: 'course-authoring.course-outline.configure-modal.basic-tab.due-time',
+    defaultMessage: 'Due time:',
+  }
 });
 
 export default messages;

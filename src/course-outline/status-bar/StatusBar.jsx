@@ -15,6 +15,7 @@ import { VIDEO_SHARING_OPTIONS } from '../constants';
 import { useContentTagsCount } from '../../generic/data/apiHooks';
 import messages from './messages';
 import { getVideoSharingOptionText } from '../utils';
+import { OrgCustomDatetimeFormat } from '../../utils';
 
 const StatusBarItem = ({ title, children }) => (
   <div className="d-flex flex-column justify-content-between">
@@ -87,16 +88,7 @@ const StatusBar = ({
             destination={scheduleDestination()}
             showLaunchIcon={false}
           >
-            {courseReleaseDateObj.isValid() ? (
-              <FormattedDate
-                value={courseReleaseDateObj}
-                year="numeric"
-                month="short"
-                day="2-digit"
-                hour="numeric"
-                minute="numeric"
-              />
-            ) : courseReleaseDate}
+            {OrgCustomDatetimeFormat(courseReleaseDate)}
           </Hyperlink>
         </StatusBarItem>
         <StatusBarItem title={intl.formatMessage(messages.pacingTypeTitle)}>

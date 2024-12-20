@@ -23,11 +23,11 @@ export const useContentMenuItems = courseId => {
       title: intl.formatMessage(messages['header.links.pages']),
     },
     {
-      href: `${studioBaseUrl}/assets/${courseId}`,
+      href: `${getConfig().INSIGHTS_BASE_URL}/file/browser?prefix=${encodeURIComponent(courseId)}%2F`,
       title: intl.formatMessage(messages['header.links.filesAndUploads']),
     },
   ];
-  if (getConfig().ENABLE_VIDEO_UPLOAD_PAGE_LINK_IN_CONTENT_DROPDOWN === 'true') {
+  if (false && getConfig().ENABLE_VIDEO_UPLOAD_PAGE_LINK_IN_CONTENT_DROPDOWN === 'true') {
     items.push({
       href: `${studioBaseUrl}/videos/${courseId}`,
       title: intl.formatMessage(messages['header.links.videoUploads']),

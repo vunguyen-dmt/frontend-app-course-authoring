@@ -37,6 +37,11 @@ const HomeSidebar = () => {
       </p>
       <HelpSidebarLink
         as="span"
+        pathToPage="https://dlc.hutech.edu.vn/hutech-x-doc"
+        title="Hướng dẫn xây dựng khóa học từ TTDHS"
+      />
+      <HelpSidebarLink
+        as="span"
         pathToPage={aboutHomeLink || ''}
         title={intl.formatMessage(messages.studioHomeLinkToGettingStarted, { studioName })}
       />

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import classNames from 'classnames';
-import { StudioFooter } from '@edx/frontend-component-footer';
+import Footer from '@edx/frontend-component-footer';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import {
   Alert,
@@ -266,7 +266,7 @@ const LibraryAuthoringPage = ({ returnToLibrarySelection }: LibraryAuthoringPage
             <LibraryContent contentType={activeKey} />
           </SearchContextProvider>
         </Container>
-        {!componentPickerMode && <StudioFooter containerProps={{ size: undefined }} />}
+        {!componentPickerMode && <Footer showLanguageSelector />}
       </div>
       {!!sidebarComponentInfo?.type && (
         <div className="library-authoring-sidebar box-shadow-left-1 bg-white" data-testid="library-sidebar">

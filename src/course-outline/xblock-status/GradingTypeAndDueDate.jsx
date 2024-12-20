@@ -8,6 +8,7 @@ import {
 } from '@openedx/paragon/icons';
 
 import messages from './messages';
+import { OrgCustomDatetimeFormat } from '../../utils';
 
 const GradingTypeAndDueDate = ({
   isSelfPaced,
@@ -54,7 +55,7 @@ const GradingTypeAndDueDate = ({
     if (dueDate && isInstructorPaced) {
       return (
         <div className="status-grading-date" data-testid="due-date-div">
-          {intl.formatMessage(messages.dueLabel)} {dueDate}
+          {intl.formatMessage(messages.dueLabel)} {OrgCustomDatetimeFormat(dueDate)}
         </div>
       );
     }

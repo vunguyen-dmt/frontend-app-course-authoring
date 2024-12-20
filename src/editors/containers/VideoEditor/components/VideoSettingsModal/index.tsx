@@ -27,7 +27,7 @@ const VideoSettingsModal: React.FC<Props> = ({
   isLibrary,
 }) => (
   <>
-    {!isLibrary && (
+    {false && !isLibrary && (
       <Button
         variant="link"
         className="text-primary-500"
@@ -48,7 +48,7 @@ const VideoSettingsModal: React.FC<Props> = ({
     {!isLibrary && (
       <SocialShareWidget />
     )}
-    <ThumbnailWidget />
+    {/* <ThumbnailWidget /> */}
     {!isLibrary && ( // Since content libraries v2 don't support static assets yet, we can't include transcripts.
       <TranscriptWidget />
     )}

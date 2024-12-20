@@ -13,6 +13,7 @@ import ImageUploadModal from '../ImageUploadModal';
 import SourceCodeModal from '../SourceCodeModal';
 import * as hooks from './hooks';
 import './customTinyMcePlugins/embedIframePlugin';
+import 'tinymce/plugins/media';
 
 export { prepareEditorRef } from './hooks';
 

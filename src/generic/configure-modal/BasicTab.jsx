@@ -31,6 +31,7 @@ const BasicTab = ({
       {!isSelfPaced && (
         <>
           <h5 className="mt-4 text-gray-700"><FormattedMessage {...messages.releaseDateAndTime} /></h5>
+          <h5 className="text-danger-400">Lưu ý: cài đặt ngày giờ trên cửa sổ này theo múi giờ Việt Nam (GMT+7) và có định dạng DD/MM/YYYY thay vì múi giờ UTC+0 và định dạng MM/DD/YYYY như trước đây.</h5>
           <hr />
           <div data-testid="release-date-stack">
             <Stack className="mt-3" direction="horizontal" gap={5}>
@@ -44,7 +45,7 @@ const BasicTab = ({
               <DatepickerControl
                 type={DATEPICKER_TYPES.time}
                 value={releaseDate}
-                label={intl.formatMessage(messages.releaseTimeUTC)}
+                label={intl.formatMessage(messages.releaseTime)}
                 controlName="start-time"
                 onChange={(val) => setFieldValue('releaseDate', val)}
               />
@@ -85,7 +86,7 @@ const BasicTab = ({
                   <DatepickerControl
                     type={DATEPICKER_TYPES.time}
                     value={dueDate}
-                    label={intl.formatMessage(messages.dueTimeUTC)}
+                    label={intl.formatMessage(messages.dueTime)}
                     controlName="start-time"
                     onChange={(val) => setFieldValue('dueDate', val)}
                   />

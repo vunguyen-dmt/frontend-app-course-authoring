@@ -301,3 +301,51 @@ export const getFileSizeToClosestByte = (fileSize) => {
   const fileSizeFixedDecimal = Number.parseFloat(size).toFixed(2);
   return `${fileSizeFixedDecimal} ${units[divides]}`;
 };
+
+export const adjustToLocalTimeFromBackendToFrontendDisplay = (date) => {
+  /**
+   * Convert local time to UTC from react-datepicker
+   * Note: react-datepicker has a bug where it only interacts with local time
+   * @param {Date} date - date in local time
+   * @return {string} YYYY-MM-DDTHH:MM:SSZ
+   */
+  if (!date) {
+    return '';
+  }
+  const parsedDate = convertToDateFromString(date);
+  if (!date) {
+    return date;
+  }
+  parsedDate.setHours(parsedDate.getHours() + 7);
+  return moment(parsedDate).format('YYYY/MM/DD HH:mm');
+};
+
+export const OrgCustomDatetimeFormat = (date) => {
+  if (!date) {
+    return '';
+  }
+
+  return moment(date).format('DD/MM/YYYY HH:mm [GMT+7]');
+} 
+
+export const adjustToLocalTimeFromFrontendToBackend = (value) => {
+  if (!value) {
+    return value;
+  }
+  const dateTimeValue = convertToDateFromString(value);
+  if (dateTimeValue) {
+    dateTimeValue.setHours(dateTimeValue.getHours() - 7);
+  }
+  return convertToStringFromDate(dateTimeValue);
+};
+
+export const adjustToLocalTimeFromBackendToFrontend = (value) => {
+  if (!value) {
+    return value;
+  }
+  const dateTimeValue = convertToDateFromString(value);
+  if (dateTimeValue) {
+    dateTimeValue.setHours(dateTimeValue.getHours() + 7);
+  }
+  return convertToStringFromDate(dateTimeValue);
+};

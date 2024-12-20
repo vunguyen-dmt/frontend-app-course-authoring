@@ -7,6 +7,7 @@ import {
 } from '@openedx/paragon/icons';
 
 import messages from './messages';
+import { OrgCustomDatetimeFormat } from '../../utils';
 
 const ReleaseStatus = ({
   isInstructorPaced,
@@ -36,7 +37,7 @@ const ReleaseStatus = ({
       </span>
       <Icon className="mr-1" size="sm" src={ClockIcon} />
       {intl.formatMessage(releaseLabel)}
-      {releaseDate && releaseDate}
+      {releaseDate && OrgCustomDatetimeFormat(releaseDate)}
     </div>
   );
 

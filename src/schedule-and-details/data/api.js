@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { camelCaseObject, getConfig } from '@edx/frontend-platform';
 import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
-import { convertObjectToSnakeCase } from '../../utils';
+import { adjustToLocalTimeFromBackendToFrontend, adjustToLocalTimeFromFrontendToBackend, convertObjectToSnakeCase } from '../../utils';
 
 const getApiBaseUrl = () => getConfig().STUDIO_BASE_URL;
 export const getCourseDetailsApiUrl = (courseId) => `${getApiBaseUrl()}/api/contentstore/v1/course_details/${courseId}`;
@@ -17,7 +17,14 @@ export async function getCourseDetails(courseId) {
   const { data } = await getAuthenticatedHttpClient().get(
     `${getCourseDetailsApiUrl(courseId)}`,
   );
-  return camelCaseObject(data);
+  const result = camelCaseObject(data);
+  if (result) {
+    const adjustingDates = ['startDate', 'endDate', 'enrollmentStart', 'enrollmentEnd', 'certificateAvailableDate', 'upgradeDeadline'];
+    adjustingDates.forEach(i => {
+      result[i] = adjustToLocalTimeFromBackendToFrontend(result[i]);
+    });
+  }
+  return result;
 }
 
 /**
@@ -27,11 +34,23 @@ export async function getCourseDetails(courseId) {
  * @returns {Promise<Object>}
  */
 export async function updateCourseDetails(courseId, details) {
+  const adjustingDates = ['startDate', 'endDate', 'enrollmentStart', 'enrollmentEnd', 'certificateAvailableDate', 'upgradeDeadline'];
+  const adjustedDetails = { ...details };
+  adjustingDates.forEach(i => {
+    adjustedDetails[i] = adjustToLocalTimeFromFrontendToBackend(details[i]);
+  });
+
   const { data } = await getAuthenticatedHttpClient().put(
     `${getCourseDetailsApiUrl(courseId)}`,
-    convertObjectToSnakeCase(details, true),
+    convertObjectToSnakeCase(adjustedDetails, true),
   );
-  return camelCaseObject(data);
+  const result = camelCaseObject(data);
+  if (result) {
+    adjustingDates.forEach(i => {
+      result[i] = adjustToLocalTimeFromBackendToFrontend(result[i]);
+    });
+  }
+  return result;
 }
 
 /**
