@@ -1,7 +1,6 @@
 import { defineMessages } from '@edx/frontend-platform/i18n';
 
 const messages = defineMessages({
-
   settingsWidgetTitle: {
     id: 'authoring.problemeditor.settings.settingsWidgetTitle',
     defaultMessage: 'Settings',
@@ -186,6 +185,36 @@ const messages = defineMessages({
     id: 'authoring.problemeditor.settings.showAnswer.explanation.text',
     defaultMessage: 'Provide an explanation for the correct answer.',
     description: 'Solution Explanation text',
+  },
+  'authoring.probletype.single-select': {
+    id: 'authoring.probletype.single-select',
+    defaultMessage: 'Single select',
+    description: '',
+  },
+  'authoring.probletype.multi-select': {
+    id: 'authoring.probletype.multi-select',
+    defaultMessage: 'Multi-select',
+    description: '',
+  },
+  'authoring.probletype.dropdown': {
+    id: 'authoring.probletype.dropdown',
+    defaultMessage: 'Dropdown',
+    description: '',
+  },
+  'authoring.probletype.numerical-input': {
+    id: 'authoring.probletype.numerical-input',
+    defaultMessage: 'Numerical input',
+    description: '',
+  },
+  'authoring.probletype.text-input': {
+    id: 'authoring.probletype.text-input',
+    defaultMessage: 'Text input',
+    description: '',
+  },
+  'authoring.probletype.advanced-problem': {
+    id: 'authoring.probletype.advanced-problem',
+    defaultMessage: 'Advanced problem',
+    description: '',
   },
 });
 

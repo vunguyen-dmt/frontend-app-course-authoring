@@ -77,6 +77,66 @@ const messages = defineMessages({
     defaultMessage: 'Learn more about advanced problem types',
     description: 'Label for Learn more about advanced problem types button',
   },
+  'authoring.probletype.single-select': {
+    id: 'authoring.probletype.single-select',
+    defaultMessage: 'Single select',
+    description: '',
+  },
+  'authoring.probletype.multi-select': {
+    id: 'authoring.probletype.multi-select',
+    defaultMessage: 'Multi-select',
+    description: '',
+  },
+  'authoring.probletype.dropdown': {
+    id: 'authoring.probletype.dropdown',
+    defaultMessage: 'Dropdown',
+    description: '',
+  },
+  'authoring.probletype.numerical-input': {
+    id: 'authoring.probletype.numerical-input',
+    defaultMessage: 'Numerical input',
+    description: '',
+  },
+  'authoring.probletype.text-input': {
+    id: 'authoring.probletype.text-input',
+    defaultMessage: 'Text input',
+    description: '',
+  },
+  'authoring.probletype.advanced-problem': {
+    id: 'authoring.probletype.advanced-problem',
+    defaultMessage: 'Advanced problem',
+    description: '',
+  },
+  'authoring.probletype.single-select.previewDescription': {
+    id: 'authoring.probletype.single-select.previewDescription',
+    defaultMessage: 'Learners must select the correct answer from a list of possible options.',
+    description: '',
+  },
+  'authoring.probletype.multi-select.previewDescription': {
+    id: 'authoring.probletype.multi-select.previewDescription',
+    defaultMessage: 'Learners must select all correct answers from a list of possible options.',
+    description: '',
+  },
+  'authoring.probletype.dropdown.previewDescription': {
+    id: 'authoring.probletype.dropdown.previewDescription',
+    defaultMessage: 'Learners must select the correct answer from a list of possible options.',
+    description: '',
+  },
+  'authoring.probletype.numerical-input.previewDescription': {
+    id: 'authoring.probletype.numerical-input.previewDescription',
+    defaultMessage: 'Specify one or more correct numeric answers, submitted in a response field.',
+    description: '',
+  },
+  'authoring.probletype.text-input.previewDescription': {
+    id: 'authoring.probletype.text-input.previewDescription',
+    defaultMessage: 'Specify one or more correct text answers, including numbers and special characters, submitted in a response field.',
+    description: '',
+  },
+  'authoring.probletype.advanced-problem.previewDescription': {
+    id: 'authoring.probletype.advanced-problem.previewDescription',
+    defaultMessage: '<div />',
+    description: '',
+  },
 });
 
 export default messages;

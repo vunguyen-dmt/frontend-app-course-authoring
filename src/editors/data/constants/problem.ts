@@ -20,6 +20,7 @@ export type ProblemType = typeof ProblemTypeKeys[keyof typeof ProblemTypeKeys];
 export const ProblemTypes = StrictDict({
   [ProblemTypeKeys.SINGLESELECT]: {
     title: 'Single select',
+    id: 'authoring.probletype.single-select',
     preview: singleSelect,
     previewDescription: 'Learners must select the correct answer from a list of possible options.',
     description: 'Enter your single select answers below and select which choices are correct. Learners must choose one correct answer.',
@@ -31,6 +32,7 @@ export const ProblemTypes = StrictDict({
   },
   [ProblemTypeKeys.MULTISELECT]: {
     title: 'Multi-select',
+    id: 'authoring.probletype.multi-select',
     preview: multiSelect,
     previewDescription: 'Learners must select all correct answers from a list of possible options.',
     description: 'Enter your multi select answers below and select which choices are correct. Learners must choose all correct answers.',
@@ -41,6 +43,7 @@ export const ProblemTypes = StrictDict({
   },
   [ProblemTypeKeys.DROPDOWN]: {
     title: 'Dropdown',
+    id: 'authoring.probletype.dropdown',
     preview: dropdown,
     previewDescription: 'Learners must select the correct answer from a list of possible options',
     description: 'Enter your dropdown answers below and select which choice is correct. Learners must select one correct answer.',
@@ -51,6 +54,7 @@ export const ProblemTypes = StrictDict({
   },
   [ProblemTypeKeys.NUMERIC]: {
     title: 'Numerical input',
+    id: 'authoring.probletype.numerical-input',
     preview: numericalInput,
     previewDescription: 'Specify one or more correct numeric answers, submitted in a response field.',
     description: 'Enter correct numerical input answers below. Learners must enter one correct answer.',
@@ -61,6 +65,7 @@ export const ProblemTypes = StrictDict({
   },
   [ProblemTypeKeys.TEXTINPUT]: {
     title: 'Text input',
+    id: 'authoring.probletype.text-input',
     preview: textInput,
     previewDescription: 'Specify one or more correct text answers, including numbers and special characters, submitted in a response field.',
     description: 'Enter your text input answers below and select which choices are correct. Learners must enter one correct answer.',
@@ -71,6 +76,7 @@ export const ProblemTypes = StrictDict({
   },
   [ProblemTypeKeys.ADVANCED]: {
     title: 'Advanced Problem',
+    id: 'authoring.probletype.advanced-problem',
     preview: ('<div />'),
     description: 'An Advanced Problem Type',
     helpLink: 'something.com',

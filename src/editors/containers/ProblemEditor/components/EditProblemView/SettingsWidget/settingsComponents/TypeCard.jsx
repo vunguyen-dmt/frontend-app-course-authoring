@@ -33,7 +33,7 @@ const TypeCard = ({
           correctAnswerCount={correctAnswerCount}
           key={typeKey}
           typeKey={typeKey}
-          label={ProblemTypes[typeKey].title}
+          label={intl.formatMessage(messages[ProblemTypes[typeKey].id])}
           selected={typeKey !== problemType}
           problemType={problemType}
           lastRow={(i + 1) === problemTypeKeysArray.length}

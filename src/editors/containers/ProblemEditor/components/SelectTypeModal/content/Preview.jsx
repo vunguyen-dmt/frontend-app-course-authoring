@@ -21,7 +21,7 @@ const Preview = ({
   return (
     <Container style={{ width: '494px', height: '400px' }} className="bg-light-300 rounded p-4">
       <div className="small">
-        {intl.formatMessage(messages.previewTitle, { previewTitle: data.title })}
+        {intl.formatMessage(messages.previewTitle, { previewTitle: intl.formatMessage(messages[data.id]) })}
       </div>
       <Image
         fluid
@@ -30,7 +30,7 @@ const Preview = ({
         alt={intl.formatMessage(messages.previewAltText, { problemType })}
       />
       <div className="mb-3">
-        {intl.formatMessage(messages.previewDescription, { previewDescription: data.previewDescription })}
+        {intl.formatMessage(messages.previewDescription, { previewDescription: intl.formatMessage(messages[`${data.id }.previewDescription`]) })}
       </div>
       <Hyperlink
         destination={data.helpLink}

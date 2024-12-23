@@ -45,7 +45,7 @@ const ProblemTypeSelect: React.FC<Props> = ({
                 value={key}
                 {...settings}
               >
-                {ProblemTypes[key].title}
+                <FormattedMessage {...messages[ProblemTypes[key].id]} />
               </SelectableBox>
             )
             : null
