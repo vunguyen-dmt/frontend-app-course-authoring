@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
@@ -11,6 +11,7 @@ import {
 } from '@openedx/paragon/icons';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 
+import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import Placeholder from '../editors/Placeholder';
 import { RequestStatus } from '../data/constants';
 import { useModel } from '../generic/model-store';
@@ -43,6 +44,7 @@ import LicenseSection from './license-section';
 import ScheduleSidebar from './schedule-sidebar';
 import messages from './messages';
 import { useLoadValuesPrompt, useSaveValuesPrompt } from './hooks';
+import { getCourseTeam } from '../course-team/data/api';
 
 const ScheduleAndDetails = ({ intl, courseId }) => {
   const courseSettings = useSelector(getCourseSettings);
@@ -51,6 +53,7 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
   const loadingSettingsStatus = useSelector(getLoadingSettingsStatus);
   const isLoading = loadingDetailsStatus === RequestStatus.IN_PROGRESS
     || loadingSettingsStatus === RequestStatus.IN_PROGRESS;
+  const [canEditDates, setCanEditDates] = useState(false);
 
   const course = useModel('courseDetails', courseId);
   document.title = getPageHeadTitle(course?.name, intl.formatMessage(messages.headingTitle));
@@ -171,6 +174,23 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
     ? intl.formatMessage(messages.alertWarningDescriptionsOnSaveWithError)
     : intl.formatMessage(messages.alertWarningDescriptions);
 
+  // only global staff, or course admin can edit dates. Course staffs can NOT.
+  useEffect(() => {
+    const currentUser = getAuthenticatedUser();
+    getCourseTeam(courseId).then(teamMemberData => {
+      let teamMembers = [];
+      if (teamMemberData) {
+        teamMembers = teamMemberData.users;
+      }
+
+      const isCourseInstructor = currentUser && teamMembers && teamMembers.filter(i => i.role === 'instructor' && i.username === currentUser.username).length > 0;
+
+      if ((currentUser && currentUser.administrator === true) || isCourseInstructor) {
+        setCanEditDates(true);
+      }
+    });
+  }, []);
+
   return (
     <>
       <Container size="xl" className="schedule-and-details px-4">
@@ -266,6 +286,7 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
                     certificatesDisplayBehavior={certificatesDisplayBehavior}
                     canShowCertificateAvailableDateField={canShowCertificateAvailableDateField}
                     onChange={handleValuesChange}
+                    canEditDates={canEditDates}
                   />
                   {aboutPageEditable && (
                     <DetailsSection

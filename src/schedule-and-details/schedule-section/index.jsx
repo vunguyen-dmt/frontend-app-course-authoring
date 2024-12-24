@@ -20,6 +20,7 @@ const ScheduleSection = ({
   certificatesDisplayBehavior,
   canShowCertificateAvailableDateField,
   onChange,
+  canEditDates,
 }) => {
   const intl = useIntl();
   const enrollmentEndHelpText = intl.formatMessage(
@@ -44,6 +45,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleCourseStartDateHelpText),
       controlName: 'startDate',
       errorFeedback: errorFields?.startDate,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -55,6 +57,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleCourseEndDateHelpText),
       controlName: 'endDate',
       errorFeedback: errorFields?.endDate,
+      readonly: !canEditDates,
     },
     {
       skip: !canShowCertificateAvailableDateField,
@@ -64,6 +67,7 @@ const ScheduleSection = ({
       availableDateErrorFeedback: errorFields?.certificateAvailableDate,
       certificatesDisplayBehavior,
       displayBehaviorErrorFeedback: errorFields?.certificatesDisplayBehavior,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -75,6 +79,7 @@ const ScheduleSection = ({
       helpText: intl.formatMessage(messages.scheduleEnrollmentStartDateHelpText),
       controlName: 'enrollmentStart',
       errorFeedback: errorFields?.enrollmentStart,
+      readonly: !canEditDates,
     },
     {
       labels: [
@@ -84,7 +89,7 @@ const ScheduleSection = ({
       value: enrollmentEnd,
       rowType: SCHEDULE_ROW_TYPES.datetime,
       helpText: computedEnrollmentEndHelpText,
-      readonly: !enrollmentEndEditable,
+      readonly: !enrollmentEndEditable || !canEditDates,
       controlName: 'enrollmentEnd',
       errorFeedback: errorFields?.enrollmentEnd,
     },
