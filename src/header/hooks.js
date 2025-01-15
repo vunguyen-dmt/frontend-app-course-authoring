@@ -28,7 +28,7 @@ export const useContentMenuItems = courseId => {
     },
     {
       href: `${getConfig().INSIGHTS_BASE_URL}/courses/${encodeURIComponent(courseId)}`,
-      title: intl.formatMessage(messages['header.links.Insights']),
+      title: intl.formatMessage(messages['header.links.insights']),
     },
   ];
   if (false && getConfig().ENABLE_VIDEO_UPLOAD_PAGE_LINK_IN_CONTENT_DROPDOWN === 'true') {
