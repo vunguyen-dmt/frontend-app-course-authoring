@@ -156,6 +156,11 @@ const messages = defineMessages({
     defaultMessage: 'Back to course outline in Studio',
     description: 'The aria label for the link back to the Studio Course Outline',
   },
+  'header.label.insights': {
+    id: 'header.label.insights',
+    defaultMessage: 'Insights',
+    description: '',
+  },
 });
 
 export default messages;
