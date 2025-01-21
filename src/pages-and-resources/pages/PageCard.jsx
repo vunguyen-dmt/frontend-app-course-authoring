@@ -50,7 +50,7 @@ const PageCard = ({
       />
       <Card.Body>
         <Card.Section>
-        {formatMessage(messages[`${page.name }.Description`])}
+        {formatMessage(messages[`${page.name}.Description`])}
         </Card.Section>
       </Card.Body>
     </Card>

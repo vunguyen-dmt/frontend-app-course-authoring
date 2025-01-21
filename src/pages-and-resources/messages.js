@@ -65,6 +65,10 @@ const messages = defineMessages({
     id: 'course-authoring.pages-resources.ora-settings',
     defaultMessage: 'Open Response Assessment Settings',
   },
+  'Flexible Peer Grading for ORAs': {
+    id: 'course-authoring.pages-resources.ora_settings',
+    defaultMessage: 'Flexible Peer Grading for ORAs',
+  },
   'Progress.Description': {
     id: 'course-authoring.pages-resources.progress.description',
     defaultMessage: 'Keep learners engaged and on track throughout the course.',
@@ -104,6 +108,10 @@ const messages = defineMessages({
   'Open Response Assessment Settings.Description': {
     id: 'course-authoring.pages-resources.ora-settings.description',
     defaultMessage: 'Course level settings for Open Response Assessment.',
+  },
+  'Flexible Peer Grading for ORAs.Description': {
+    id: 'course-authoring.pages-resources.ora_settings.description',
+    defaultMessage: 'Course level settings for Flexible Peer Grading Open Response Assessments.',
   },
 });
 

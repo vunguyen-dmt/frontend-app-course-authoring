@@ -143,6 +143,23 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
 
   useScrollToHashElement({ isLoading });
 
+  // only global staff, or course admin can edit dates. Course staffs can NOT.
+  useEffect(() => {
+    const currentUser = getAuthenticatedUser();
+    getCourseTeam(courseId).then(teamMemberData => {
+      let teamMembers = [];
+      if (teamMemberData) {
+        teamMembers = teamMemberData.users;
+      }
+
+      const isCourseInstructor = currentUser && teamMembers && teamMembers.filter(i => i.role === 'instructor' && i.username === currentUser.username).length > 0;
+
+      if ((currentUser && currentUser.administrator === true) || isCourseInstructor) {
+        setCanEditDates(true);
+      }
+    });
+  }, [courseId]);
+
   if (isLoading) {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return <></>;
@@ -173,23 +190,6 @@ const ScheduleAndDetails = ({ intl, courseId }) => {
   const alertWhileSavingDescription = hasErrors
     ? intl.formatMessage(messages.alertWarningDescriptionsOnSaveWithError)
     : intl.formatMessage(messages.alertWarningDescriptions);
-
-  // only global staff, or course admin can edit dates. Course staffs can NOT.
-  useEffect(() => {
-    const currentUser = getAuthenticatedUser();
-    getCourseTeam(courseId).then(teamMemberData => {
-      let teamMembers = [];
-      if (teamMemberData) {
-        teamMembers = teamMemberData.users;
-      }
-
-      const isCourseInstructor = currentUser && teamMembers && teamMembers.filter(i => i.role === 'instructor' && i.username === currentUser.username).length > 0;
-
-      if ((currentUser && currentUser.administrator === true) || isCourseInstructor) {
-        setCanEditDates(true);
-      }
-    });
-  }, []);
 
   return (
     <>
