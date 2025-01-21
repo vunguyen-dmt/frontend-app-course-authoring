@@ -113,7 +113,7 @@ const SearchResult: React.FC<{ hit: ContentHit }> = ({ hit }) => {
       //   return `${getPath(getConfig().PUBLIC_PATH)}${urlSuffix}`;
       // }
       // return `/${urlSuffix}`;
-      return `${getConfig().STUDIO_BASE_URL}${urlSuffix}`;
+      return `${getConfig().STUDIO_BASE_URL}/${urlSuffix}`;
     }
 
     if (isLibraryKey(contextKey)) {
