@@ -36,8 +36,8 @@ function fetchStudioHomeData(search, hasHomeData, requestParams = {}, isPaginati
         const coursesData = await getStudioHomeCoursesV2(search || '', requestParams);
         dispatch(fetchCourseDataSuccessV2(coursesData));
       } else {
-        const coursesData = await getStudioHomeCourses(search || '');
-        dispatch(fetchCourseDataSuccess(coursesData));
+        // const coursesData = await getStudioHomeCourses(search || '');
+        // dispatch(fetchCourseDataSuccess(coursesData));
       }
 
       dispatch(updateLoadingStatuses({ courseLoadingStatus: RequestStatus.SUCCESSFUL }));
