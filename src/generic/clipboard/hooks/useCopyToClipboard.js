@@ -36,19 +36,20 @@ const useCopyToClipboard = (canEdit = true) => {
 
   // Called on initial render to fetch and populate the initial clipboard data in redux state.
   // Without this, the initial clipboard data redux state is always null.
-  useEffect(() => {
-    const fetchInitialClipboardData = async () => {
-      try {
-        const userClipboard = await getClipboard();
-        dispatch(updateClipboardData(userClipboard));
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(`Failed to fetch initial clipboard data: ${error}`);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchInitialClipboardData = async () => {
+  //     try {
+  //       console.log('fetchInitialClipboardData')
+  //       const userClipboard = await getClipboard();
+  //       dispatch(updateClipboardData(userClipboard));
+  //     } catch (error) {
+  //       // eslint-disable-next-line no-console
+  //       console.error(`Failed to fetch initial clipboard data: ${error}`);
+  //     }
+  //   };
 
-    fetchInitialClipboardData();
-  }, [dispatch]);
+  //   fetchInitialClipboardData();
+  // }, [dispatch]);
 
   useEffect(() => {
     // Handle updates to clipboard data

@@ -438,17 +438,17 @@ const CourseOutline = ({ courseId }) => {
               <OutlineSideBar courseId={courseId} />
             </Layout.Element>
           </Layout>
-          <EnableHighlightsModal
+          {/* <EnableHighlightsModal
             isOpen={isEnableHighlightsModalOpen}
             close={closeEnableHighlightsModal}
             onEnableHighlightsSubmit={handleEnableHighlightsSubmit}
-          />
+          /> */}
         </section>
-        <HighlightsModal
+        {/* <HighlightsModal
           isOpen={isHighlightsModalOpen}
           onClose={closeHighlightsModal}
           onSubmit={handleHighlightsFormSubmit}
-        />
+        /> */}
         <PublishModal
           isOpen={isPublishModalOpen}
           onClose={closePublishModal}

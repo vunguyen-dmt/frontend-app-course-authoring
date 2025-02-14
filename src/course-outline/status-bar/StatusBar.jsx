@@ -107,7 +107,7 @@ const StatusBar = ({
             {checkListTitle} {intl.formatMessage(messages.checklistCompleted)}
           </Hyperlink>
         </StatusBarItem>
-        <StatusBarItem title={intl.formatMessage(messages.highlightEmailsTitle)}>
+        {/* <StatusBarItem title={intl.formatMessage(messages.highlightEmailsTitle)}>
           <div className="d-flex align-items-center">
             {highlightsEnabledForMessaging ? (
               <span data-testid="highlights-enabled-span" className="small">
@@ -127,7 +127,7 @@ const StatusBar = ({
               {intl.formatMessage(messages.highlightEmailsLink)}
             </Hyperlink>
           </div>
-        </StatusBarItem>
+        </StatusBarItem> */}
         {getConfig().ENABLE_TAGGING_TAXONOMY_PAGES === 'true' && (
           <StatusBarItem title={intl.formatMessage(messages.courseTagsTitle)}>
             <div className="d-flex align-items-center">
@@ -182,7 +182,7 @@ const StatusBar = ({
       </Stack>
       <ContentTagsDrawerSheet
         id={courseId}
-        onClose={/* istanbul ignore next */ () => closeManageTagsDrawer()}
+        onClose={() => closeManageTagsDrawer()}
         showSheet={isManageTagsDrawerOpen}
       />
     </>

@@ -6,6 +6,7 @@ import { fetchHelpUrls } from './data/thunks';
 import { getPages, selectHelpUrlsByNames } from './data/selectors';
 
 const useHelpUrls = (tokenNames) => {
+  return {};
   const dispatch = useDispatch();
   const helpTokens = useSelector(selectHelpUrlsByNames(tokenNames));
   const pages = useSelector(getPages);

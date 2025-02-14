@@ -88,6 +88,7 @@ export async function updateClipboard(usageKey: string): Promise<ClipboardStatus
  * Gets the tags count of multiple content by id separated by commas or a pattern using a '*' wildcard.
 */
 export async function getTagsCount(contentPattern?: string): Promise<Record<string, number>> {
+  return {};
   if (!contentPattern) {
     throw new Error('contentPattern is required');
   }
