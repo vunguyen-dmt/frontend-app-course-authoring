@@ -15,7 +15,7 @@ import {
   Add as IconAdd,
   CheckCircle as CheckCircleIcon,
 } from '@openedx/paragon/icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   arrayMove,
   SortableContext,
@@ -56,9 +56,12 @@ import { useCourseOutline } from './hooks';
 import messages from './messages';
 import { getTagsExportFile } from './data/api';
 
+import { useInitClipboardData } from '../generic/clipboard';
+
 const CourseOutline = ({ courseId }) => {
   const intl = useIntl();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const {
     courseName,
@@ -138,6 +141,10 @@ const CourseOutline = ({ courseId }) => {
       window.location.href = '#';
     }
   }, [location, courseId, courseName]);
+
+  useEffect(() => {
+    useInitClipboardData(dispatch);
+  }, [dispatch]);
 
   const [sections, setSections] = useState(sectionsList);
 

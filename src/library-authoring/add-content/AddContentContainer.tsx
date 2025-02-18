@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import type { MessageDescriptor } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Stack,
   Button,
@@ -22,7 +22,7 @@ import {
 import { v4 as uuid4 } from 'uuid';
 
 import { ToastContext } from '../../generic/toast-context';
-import { useCopyToClipboard } from '../../generic/clipboard';
+import { useCopyToClipboard, useInitClipboardData } from '../../generic/clipboard';
 import { getCanEdit } from '../../course-unit/data/selectors';
 import { useCreateLibraryBlock, useLibraryPasteClipboard, useAddComponentsToCollection } from '../data/apiHooks';
 import { useLibraryContext } from '../common/context';
@@ -65,6 +65,7 @@ const AddContentButton = ({ contentType, onCreateContent } : AddContentButtonPro
 
 const AddContentContainer = () => {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const {
     libraryId,
     collectionId,
@@ -231,6 +232,10 @@ const AddContentContainer = () => {
   if (pasteClipboardMutation.isLoading) {
     showToast(intl.formatMessage(messages.pastingClipboardMessage));
   }
+
+  useEffect(() => {
+    useInitClipboardData(dispatch);
+  }, [dispatch]);
 
   return (
     <Stack direction="vertical">
