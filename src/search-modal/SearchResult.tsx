@@ -27,7 +27,7 @@ function getLibraryComponentUrlSuffix(hit: ContentHit): string {
 */
 function getUnitUrlSuffix(hit: ContentHit): string {
   const { contextKey, usageKey } = hit;
-  return `/container/${usageKey}`
+  return `container/${usageKey}`
   // return `course/${contextKey}/container/${usageKey}`;
 }
 
@@ -50,7 +50,7 @@ function getUnitComponentUrlSuffix(hit: ContentHit): string {
       if ('usageKey' in parent) {
         const encodedUsageKey = encodeURIComponent(libComponentUsageKey || usageKey);
         // return `course/${contextKey}/container/${parent.usageKey}?show=${encodedUsageKey}`;
-        return `/container/${parent.usageKey}#${usageKey}`;
+        return `container/${parent.usageKey}#${usageKey}`;
       }
     }
   }
